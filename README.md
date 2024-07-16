@@ -5,7 +5,7 @@
 
 # SL4J Logback
 
-## ConsleAppender
+## ConsoleAppender
 
 ## FileAppender
 
