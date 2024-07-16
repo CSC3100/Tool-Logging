@@ -10,6 +10,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * An appender that sends logs to an HTTP endpoint.
+ *
+ * @author javiergs
+ * @version 1.0
+ */
 public class HttpAppender extends AppenderBase<ILoggingEvent> {
 	
 	private String url;
@@ -24,7 +30,6 @@ public class HttpAppender extends AppenderBase<ILoggingEvent> {
 			json.put("message", event.getFormattedMessage());
 			json.put("threadName", event.getThreadName());
 			json.put("timestamp", event.getTimeStamp());
-			
 			sendLog(json.toString());
 		} catch (Exception e) {
 			addError("Failed to send log", e);
@@ -38,12 +43,13 @@ public class HttpAppender extends AppenderBase<ILoggingEvent> {
 		connection.setRequestMethod("POST");
 		connection.setRequestProperty("Content-Type", "application/json");
 		connection.setRequestProperty("Authorization", "Bearer " + this.bearerToken);
-		
-		try (OutputStream os = connection.getOutputStream()) {
+		try {
+			OutputStream os = connection.getOutputStream();
 			byte[] input = jsonLog.getBytes(StandardCharsets.UTF_8);
 			os.write(input, 0, input.length);
+		} catch (IOException e) {
+			throw new IOException("Failed to send log", e);
 		}
-		
 		int responseCode = connection.getResponseCode();
 		if (responseCode != HttpURLConnection.HTTP_OK) {
 			throw new IOException("Failed to send log: " + responseCode);

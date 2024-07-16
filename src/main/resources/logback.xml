@@ -36,7 +36,7 @@
 
     <appender name="HTTP_EXAMPLE" class="javiergs.HttpAppender">
         <url>https://in.logs.betterstack.com</url>
-        <bearerToken>WE4x6ya1dfMwRbUsP3DasVmg</bearerToken>
+        <bearerToken>WE4x6ya1dfMwRbUsP3DasVmgXXX</bearerToken>
     </appender>
 
     <root level="ALL">
