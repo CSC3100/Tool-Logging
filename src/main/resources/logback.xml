@@ -36,13 +36,21 @@
 
     <appender name="HTTP_EXAMPLE" class="javiergs.HttpAppender">
         <url>https://in.logs.betterstack.com</url>
-        <bearerToken>PUT HERE YOUR KEY FROM BETTER STACK</bearerToken>
+        <bearerToken>WE4x6ya1dfMwRbUsP3DasVmgXXX</bearerToken>
+    </appender>
+
+    <appender name="LOGTAIL" class="com.logtail.logback.LogtailAppender">
+        <appName>ADAS</appName>
+        <sourceToken>WE4x6ya1dfMwRbUsP3DasVmg</sourceToken>
+        <mdcFields>requestId,requestTime</mdcFields>
+        <mdcTypes>string,int</mdcTypes>
     </appender>
 
     <root level="ALL">
         <appender-ref ref="CONSOLE_TXT"/>
         <appender-ref ref="CONSOLE_JSON"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="HTTP_EXAMPLE"/>
+        <!-- <appender-ref ref="HTTP_EXAMPLE"/> -->
+        <appender-ref ref="LOGTAIL"/>
     </root>
 </configuration>
