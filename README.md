@@ -5,9 +5,7 @@
 A simple Java class that demonstrates logging at various levels (trace, debug, info, warn, error) using SLF4J. The project is managed using Maven and includes several dependencies for logging and JSON processing. The `logback.xml` file configures the logging behavior, including different appenders and their formats.
 
 ## ConsoleAppender
-Two examples are provided:
-     - `CONSOLE_JSON`: Logs in JSON format to the console.
-     - `CONSOLE_TXT`: Logs in plain text format to the console.
+Two examples are provided: `CONSOLE_JSON`: Logs in JSON format to the console, and `CONSOLE_TXT`: Logs in plain text format to the console.
 
 ## FileAppender
 
@@ -19,3 +17,5 @@ A Custom HTTP appender for sending logs to an HTTP endpoint with a bearer token 
 
 
 ## LogtailAppender
+
+The LogtailAppender is a custom appender provided by the Logtail library for sending logs to BetterStack.com.
