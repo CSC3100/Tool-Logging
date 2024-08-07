@@ -8,3 +8,5 @@
 ## FileAppender
 
 ## HttpAppender
+
+## LogtailAppender
